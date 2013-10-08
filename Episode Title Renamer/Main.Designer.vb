@@ -57,6 +57,7 @@ Partial Class Main
         Me.Label4 = New System.Windows.Forms.Label()
         Me.SeriesName = New System.Windows.Forms.TextBox()
         Me.OutputLog = New System.Windows.Forms.TextBox()
+        Me.ButtonCopylog = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -161,7 +162,7 @@ Partial Class Main
         Me.BrowseCSV.Location = New System.Drawing.Point(551, 57)
         Me.BrowseCSV.Name = "BrowseCSV"
         Me.BrowseCSV.Size = New System.Drawing.Size(75, 23)
-        Me.BrowseCSV.TabIndex = 2
+        Me.BrowseCSV.TabIndex = 3
         Me.BrowseCSV.Text = "Browse..."
         Me.BrowseCSV.UseVisualStyleBackColor = True
         '
@@ -170,7 +171,7 @@ Partial Class Main
         Me.PathCSV.Location = New System.Drawing.Point(101, 57)
         Me.PathCSV.Name = "PathCSV"
         Me.PathCSV.Size = New System.Drawing.Size(444, 20)
-        Me.PathCSV.TabIndex = 3
+        Me.PathCSV.TabIndex = 2
         Me.PathCSV.Text = "C:\LooneyTunes.csv"
         '
         'Label1
@@ -196,7 +197,7 @@ Partial Class Main
         Me.PathEpisodes.Location = New System.Drawing.Point(101, 83)
         Me.PathEpisodes.Name = "PathEpisodes"
         Me.PathEpisodes.Size = New System.Drawing.Size(444, 20)
-        Me.PathEpisodes.TabIndex = 6
+        Me.PathEpisodes.TabIndex = 4
         Me.PathEpisodes.Text = "C:\"
         '
         'BrowseEpisodes
@@ -214,7 +215,7 @@ Partial Class Main
         Me.CheckboxMove.Location = New System.Drawing.Point(11, 107)
         Me.CheckboxMove.Name = "CheckboxMove"
         Me.CheckboxMove.Size = New System.Drawing.Size(174, 17)
-        Me.CheckboxMove.TabIndex = 12
+        Me.CheckboxMove.TabIndex = 6
         Me.CheckboxMove.Text = "Move episodes after renaming?"
         Me.CheckboxMove.UseVisualStyleBackColor = True
         '
@@ -233,7 +234,7 @@ Partial Class Main
         Me.PathNewpath.Location = New System.Drawing.Point(101, 130)
         Me.PathNewpath.Name = "PathNewpath"
         Me.PathNewpath.Size = New System.Drawing.Size(444, 20)
-        Me.PathNewpath.TabIndex = 14
+        Me.PathNewpath.TabIndex = 7
         '
         'BrowseNewpath
         '
@@ -241,34 +242,34 @@ Partial Class Main
         Me.BrowseNewpath.Location = New System.Drawing.Point(551, 130)
         Me.BrowseNewpath.Name = "BrowseNewpath"
         Me.BrowseNewpath.Size = New System.Drawing.Size(75, 23)
-        Me.BrowseNewpath.TabIndex = 13
+        Me.BrowseNewpath.TabIndex = 8
         Me.BrowseNewpath.Text = "Browse..."
         Me.BrowseNewpath.UseVisualStyleBackColor = True
         '
         'ButtonRename
         '
-        Me.ButtonRename.Location = New System.Drawing.Point(201, 165)
+        Me.ButtonRename.Location = New System.Drawing.Point(160, 165)
         Me.ButtonRename.Name = "ButtonRename"
         Me.ButtonRename.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonRename.TabIndex = 16
+        Me.ButtonRename.TabIndex = 9
         Me.ButtonRename.Text = "Rename"
         Me.ButtonRename.UseVisualStyleBackColor = True
         '
         'ButtonClearlog
         '
-        Me.ButtonClearlog.Location = New System.Drawing.Point(282, 165)
+        Me.ButtonClearlog.Location = New System.Drawing.Point(241, 165)
         Me.ButtonClearlog.Name = "ButtonClearlog"
         Me.ButtonClearlog.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonClearlog.TabIndex = 17
+        Me.ButtonClearlog.TabIndex = 10
         Me.ButtonClearlog.Text = "Clear Log"
         Me.ButtonClearlog.UseVisualStyleBackColor = True
         '
         'ButtonClearall
         '
-        Me.ButtonClearall.Location = New System.Drawing.Point(363, 165)
+        Me.ButtonClearall.Location = New System.Drawing.Point(322, 165)
         Me.ButtonClearall.Name = "ButtonClearall"
         Me.ButtonClearall.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonClearall.TabIndex = 18
+        Me.ButtonClearall.TabIndex = 11
         Me.ButtonClearall.Text = "Clear All"
         Me.ButtonClearall.UseVisualStyleBackColor = True
         '
@@ -286,7 +287,7 @@ Partial Class Main
         Me.SeriesName.Location = New System.Drawing.Point(101, 31)
         Me.SeriesName.Name = "SeriesName"
         Me.SeriesName.Size = New System.Drawing.Size(444, 20)
-        Me.SeriesName.TabIndex = 19
+        Me.SeriesName.TabIndex = 1
         Me.SeriesName.Text = "Looney Tunes"
         '
         'OutputLog
@@ -298,13 +299,23 @@ Partial Class Main
         Me.OutputLog.ReadOnly = True
         Me.OutputLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.OutputLog.Size = New System.Drawing.Size(615, 302)
-        Me.OutputLog.TabIndex = 21
+        Me.OutputLog.TabIndex = 13
+        '
+        'ButtonCopylog
+        '
+        Me.ButtonCopylog.Location = New System.Drawing.Point(403, 165)
+        Me.ButtonCopylog.Name = "ButtonCopylog"
+        Me.ButtonCopylog.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonCopylog.TabIndex = 12
+        Me.ButtonCopylog.Text = "Copy Log"
+        Me.ButtonCopylog.UseVisualStyleBackColor = True
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(639, 517)
+        Me.Controls.Add(Me.ButtonCopylog)
         Me.Controls.Add(Me.OutputLog)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.SeriesName)
@@ -366,5 +377,6 @@ Partial Class Main
     Friend WithEvents OutputLog As System.Windows.Forms.TextBox
     Friend WithEvents TimMcEnteecomToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents XBMCorgForumsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ButtonCopylog As System.Windows.Forms.Button
 
 End Class

@@ -198,7 +198,12 @@
         OutputLog.AppendText(vbNewLine & "Rename Completed at " & TimeOfDay & vbNewLine)
     End Sub
 
-    Private Sub SeriesName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SeriesName.TextChanged
-
+    Private Sub ButtonCopylog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonCopylog.Click
+        If String.IsNullOrEmpty(OutputLog.Text) Then
+            MsgBox("Unable to copy an empty log.")
+        Else
+            Clipboard.SetDataObject(OutputLog.Text)
+            MsgBox("Log contents copied to clipboard successfully!")
+        End If
     End Sub
 End Class
