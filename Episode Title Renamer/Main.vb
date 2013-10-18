@@ -107,6 +107,15 @@
         OutputLog.Clear()
     End Sub
 
+    Private Sub ButtonCopylog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonCopylog.Click
+        If String.IsNullOrEmpty(OutputLog.Text) Then
+            MsgBox("Unable to copy an empty log.")
+        Else
+            Clipboard.SetDataObject(OutputLog.Text)
+            MsgBox("Log contents copied to clipboard successfully!")
+        End If
+    End Sub
+
     Private Function CleanString(ByRef s) As String
         CleanString = s
         Dim CharsArray() As String = InvalidChars.Split(" ")
@@ -198,26 +207,17 @@
         End Try
     End Sub
 
-    Private Sub ButtonRename_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonRename.Click
-        OutputLog.AppendText("Rename Started at " & TimeOfDay)
-        ScanRename(True)
-        OutputLog.AppendText(vbNewLine & "Rename Completed at " & TimeOfDay & vbNewLine)
-    End Sub
-
-    Private Sub ButtonCopylog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonCopylog.Click
-        If String.IsNullOrEmpty(OutputLog.Text) Then
-            MsgBox("Unable to copy an empty log.")
-        Else
-            Clipboard.SetDataObject(OutputLog.Text)
-            MsgBox("Log contents copied to clipboard successfully!")
-        End If
-    End Sub
-
     Private Sub ButtonPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonPreview.Click
         OutputLog.AppendText("Preview Started at " & TimeOfDay)
         OutputLog.AppendText(vbNewLine & "FILES WILL NOT BE RENAMED UNTIL YOU PRESS THE RENAME BUTTON")
         ScanRename(False)
         OutputLog.AppendText(vbNewLine & "FILES WILL NOT BE RENAMED UNTIL YOU PRESS THE RENAME BUTTON")
         OutputLog.AppendText(vbNewLine & "Preview Completed at " & TimeOfDay & vbNewLine)
+    End Sub
+
+    Private Sub ButtonRename_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonRename.Click
+        OutputLog.AppendText("Rename Started at " & TimeOfDay)
+        ScanRename(True)
+        OutputLog.AppendText(vbNewLine & "Rename Completed at " & TimeOfDay & vbNewLine)
     End Sub
 End Class
