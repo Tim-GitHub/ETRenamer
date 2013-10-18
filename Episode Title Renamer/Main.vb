@@ -6,16 +6,19 @@
     Dim InvalidChars As String
 
     Private Sub Main_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        'Imports the invalid characters specified in the Settings window (form)
         InvalidChars = Settings.InvalidCharsList.Text
     End Sub
 
     Private Sub SettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
+        'Updates the invalid characters if they are changed
         If Settings.ShowDialog = DialogResult.OK Then
             InvalidChars = Settings.InvalidCharsList.Text
         End If
     End Sub
 
     Private Sub MenuClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuClear.Click
+        'Clears all fields
         SeriesName.Clear()
         PathCSV.Clear()
         PathEpisodes.Clear()
@@ -78,6 +81,7 @@
     End Sub
 
     Private Sub CheckboxMove_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckboxMove.CheckedChanged
+        'Enables or disables the 'New Path' field
         If CheckboxMove.Checked Then
             BrowseNewpath.Enabled = True
             PathNewpath.Enabled = True
@@ -100,6 +104,7 @@
     End Sub
 
     Private Sub ButtonClearall_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonClearall.Click
+        'Clears all fields
         SeriesName.Clear()
         PathCSV.Clear()
         PathEpisodes.Clear()
@@ -108,6 +113,7 @@
     End Sub
 
     Private Sub ButtonCopylog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonCopylog.Click
+        'Copies the complete contents of the OutputLog
         If String.IsNullOrEmpty(OutputLog.Text) Then
             MsgBox("Unable to copy an empty log.")
         Else
@@ -117,6 +123,7 @@
     End Sub
 
     Private Function CleanString(ByRef s) As String
+        'Removes any invalid characters defined on the settings string from a string
         CleanString = s
         Dim CharsArray() As String = InvalidChars.Split(" ")
         Dim i As Integer = CharsArray.GetLength(0)
@@ -166,8 +173,11 @@
             End If
             'Loop through all files in directory specified
             For Each Episode In System.IO.Directory.GetFiles(PathEpisodes.Text)
+                'Output each file as found includig path
                 OutputLog.AppendText(vbNewLine & Episode)
+                'Split filename from path
                 Dim EpisodeFilename As String = Episode.Substring(PathEpisodes.Text.Length).ToLower()
+                'Split file extension from filename
                 Dim FileExt As String = Episode.Substring(Episode.Length - 4)
                 'Begin scan through CSV file
                 Dim result As String = "0"
@@ -180,11 +190,13 @@
                         If CleanString(EpisodeFilename).Contains(CleanString((Line(1).ToLower))) Then
                             Dim SnEn() As String = Line(0).Split(" x ")
                             Dim SxEx As String = "S" & SnEn(0).PadLeft(2, "0") & "E" & SnEn(2).PadLeft(2, "0")
+                            'Combine the path (new or original), series name, season and episode number, episode name from CSV and the file extension
                             result = NewPath & CleanString(SeriesName.Text & " " & SxEx & " " & Line(1) & FileExt)
                         End If
                     End While
                 End Using
                 If result = "0" Then
+                    'No match was found, so do nothing
                     result = "Unable to locate match, please rename manually."
                 ElseIf rename = False Then
                     'If testing then do not rename
@@ -194,6 +206,7 @@
                 End If
                 OutputLog.AppendText(vbNewLine & "    >>> " & result)
             Next
+            'In the event any of the fields were invalid, these errors will be given
         Catch ex As System.IO.FileNotFoundException
             MsgBox("File not found. Please check your file path and try again." & vbNewLine & vbNewLine & "Error101: " & ex.Message)
         Catch ex As System.IO.DirectoryNotFoundException
@@ -210,6 +223,7 @@
     Private Sub ButtonPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonPreview.Click
         OutputLog.AppendText("Preview Started at " & TimeOfDay)
         OutputLog.AppendText(vbNewLine & "FILES WILL NOT BE RENAMED UNTIL YOU PRESS THE RENAME BUTTON")
+        'Running as False so that the log will output all changes without actually making them
         ScanRename(False)
         OutputLog.AppendText(vbNewLine & "FILES WILL NOT BE RENAMED UNTIL YOU PRESS THE RENAME BUTTON")
         OutputLog.AppendText(vbNewLine & "Preview Completed at " & TimeOfDay & vbNewLine)
@@ -217,6 +231,7 @@
 
     Private Sub ButtonRename_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonRename.Click
         OutputLog.AppendText("Rename Started at " & TimeOfDay)
+        'Running as True so that files will be renamed when output to the log
         ScanRename(True)
         OutputLog.AppendText(vbNewLine & "Rename Completed at " & TimeOfDay & vbNewLine)
     End Sub
