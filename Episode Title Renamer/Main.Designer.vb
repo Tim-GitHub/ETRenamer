@@ -58,6 +58,7 @@ Partial Class Main
         Me.SeriesName = New System.Windows.Forms.TextBox()
         Me.OutputLog = New System.Windows.Forms.TextBox()
         Me.ButtonCopylog = New System.Windows.Forms.Button()
+        Me.ButtonPreview = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -248,28 +249,28 @@ Partial Class Main
         '
         'ButtonRename
         '
-        Me.ButtonRename.Location = New System.Drawing.Point(160, 165)
+        Me.ButtonRename.Location = New System.Drawing.Point(201, 165)
         Me.ButtonRename.Name = "ButtonRename"
         Me.ButtonRename.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonRename.TabIndex = 9
+        Me.ButtonRename.TabIndex = 10
         Me.ButtonRename.Text = "Rename"
         Me.ButtonRename.UseVisualStyleBackColor = True
         '
         'ButtonClearlog
         '
-        Me.ButtonClearlog.Location = New System.Drawing.Point(241, 165)
+        Me.ButtonClearlog.Location = New System.Drawing.Point(282, 165)
         Me.ButtonClearlog.Name = "ButtonClearlog"
         Me.ButtonClearlog.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonClearlog.TabIndex = 10
+        Me.ButtonClearlog.TabIndex = 11
         Me.ButtonClearlog.Text = "Clear Log"
         Me.ButtonClearlog.UseVisualStyleBackColor = True
         '
         'ButtonClearall
         '
-        Me.ButtonClearall.Location = New System.Drawing.Point(322, 165)
+        Me.ButtonClearall.Location = New System.Drawing.Point(363, 165)
         Me.ButtonClearall.Name = "ButtonClearall"
         Me.ButtonClearall.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonClearall.TabIndex = 11
+        Me.ButtonClearall.TabIndex = 12
         Me.ButtonClearall.Text = "Clear All"
         Me.ButtonClearall.UseVisualStyleBackColor = True
         '
@@ -299,22 +300,32 @@ Partial Class Main
         Me.OutputLog.ReadOnly = True
         Me.OutputLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.OutputLog.Size = New System.Drawing.Size(615, 302)
-        Me.OutputLog.TabIndex = 13
+        Me.OutputLog.TabIndex = 14
         '
         'ButtonCopylog
         '
-        Me.ButtonCopylog.Location = New System.Drawing.Point(403, 165)
+        Me.ButtonCopylog.Location = New System.Drawing.Point(444, 165)
         Me.ButtonCopylog.Name = "ButtonCopylog"
         Me.ButtonCopylog.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonCopylog.TabIndex = 12
+        Me.ButtonCopylog.TabIndex = 13
         Me.ButtonCopylog.Text = "Copy Log"
         Me.ButtonCopylog.UseVisualStyleBackColor = True
+        '
+        'ButtonPreview
+        '
+        Me.ButtonPreview.Location = New System.Drawing.Point(120, 165)
+        Me.ButtonPreview.Name = "ButtonPreview"
+        Me.ButtonPreview.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonPreview.TabIndex = 9
+        Me.ButtonPreview.Text = "Preview"
+        Me.ButtonPreview.UseVisualStyleBackColor = True
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(639, 517)
+        Me.Controls.Add(Me.ButtonPreview)
         Me.Controls.Add(Me.ButtonCopylog)
         Me.Controls.Add(Me.OutputLog)
         Me.Controls.Add(Me.Label4)
@@ -378,5 +389,6 @@ Partial Class Main
     Friend WithEvents TimMcEnteecomToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents XBMCorgForumsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ButtonCopylog As System.Windows.Forms.Button
+    Friend WithEvents ButtonPreview As System.Windows.Forms.Button
 
 End Class
